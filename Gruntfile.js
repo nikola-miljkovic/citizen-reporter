@@ -17,6 +17,18 @@ module.exports = function (grunt) {
         file: 'app.js'
       }
     },
+    sass: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            src: ["public/sass/*.scss"], // Source files
+            dest: "../css/", // Destination
+            ext: ".css" // File extension
+          }
+        ]
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -31,12 +43,9 @@ module.exports = function (grunt) {
         tasks: ['develop', 'delayed-livereload']
       },
       css: {
-        files: [
-          'public/css/*.css'
-        ],
-        options: {
-          livereload: reloadPort
-        }
+        files: ['public/sass/*', 'src/sass/mixins/*'],
+        tasks: ['sass'],
+        options: { livereload: reloadPort }
       },
       views: {
         files: [
@@ -68,6 +77,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'develop',
+    'sass',
     'watch'
   ]);
 };
