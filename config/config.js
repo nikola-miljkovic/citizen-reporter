@@ -8,8 +8,7 @@ var config = {
     app: {
       name: 'citizen-reporter'
     },
-    port: 3000,
-    db: 'mongodb://localhost/citizen-reporter-development'
+    port: 3000
   },
 
   test: {
@@ -17,8 +16,7 @@ var config = {
     app: {
       name: 'citizen-reporter'
     },
-    port: 3000,
-    db: 'mongodb://localhost/citizen-reporter-test'
+    port: 3000
   },
 
   production: {
@@ -26,8 +24,7 @@ var config = {
     app: {
       name: 'citizen-reporter'
     },
-    port: 3000,
-    db: 'mongodb://localhost/citizen-reporter-production'
+    port: 3000
   }
 };
 

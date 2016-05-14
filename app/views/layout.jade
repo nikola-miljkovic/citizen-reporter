@@ -1,13 +1,24 @@
 doctype html
 html(lang='en')
   head
+    title= "Citizen Reporter"
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width')
-    title= title
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+    meta( name='description', content='meh' )
     block css
-      link(rel='stylesheet', href='/css/style.css')
+      link(rel='stylesheet', href='/css/main.css')
+      link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
     block js
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
-  body
-    block content
+  body(style="padding-bottom:10rem;", ng-app="mainApp")
+    .container
+      if (message && message.length > 0)
+        div( class=["alert", "alert-dismissable", "alert-danger"] )
+          button.close( type="button", data-dismiss="alert" ) ×
+
+      block content
+
+    include scripts

@@ -17,6 +17,20 @@ module.exports = function (grunt) {
         file: 'app.js'
       }
     },
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: "public",
+          src: ["**/*.scss"],
+          dest: "public/",
+          ext: ".css",
+          rename: function (dest, src) {
+            return dest + src.replace('sass', 'css'); // The target file is written to folder "css" instead of "scss" by renaming the folder
+          }
+        }]
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -31,12 +45,9 @@ module.exports = function (grunt) {
         tasks: ['develop', 'delayed-livereload']
       },
       css: {
-        files: [
-          'public/css/*.css'
-        ],
-        options: {
-          livereload: reloadPort
-        }
+        files: ['public/sass/*', 'src/sass/mixins/*'],
+        tasks: ['sass'],
+        options: { livereload: reloadPort }
       },
       views: {
         files: [
@@ -68,6 +79,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'develop',
+    'sass',
     'watch'
   ]);
 };
