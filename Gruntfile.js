@@ -19,14 +19,16 @@ module.exports = function (grunt) {
     },
     sass: {
       dist: {
-        files: [
-          {
-            expand: true,
-            src: ["public/sass/*.scss"], // Source files
-            dest: "../css/", // Destination
-            ext: ".css" // File extension
+        files: [{
+          expand: true,
+          cwd: "public",
+          src: ["**/*.scss"],
+          dest: "public/",
+          ext: ".css",
+          rename: function (dest, src) {
+            return dest + src.replace('sass', 'css'); // The target file is written to folder "css" instead of "scss" by renaming the folder
           }
-        ]
+        }]
       }
     },
     watch: {
