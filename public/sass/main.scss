@@ -1,5 +1,29 @@
-s {
+// Imports
+//@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "navbar";
+@import "article";
+@import "colors";
+// Imports
 
+* {
+  box-sizing: border-box;
 }
 
+html {
+  font-family: Roboto, 'Helvetica Neue', sans-serif !important;
+  color: bb-color('text-dark', 'primary');
+}
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+.content {
+  padding: 0;
+  margin: 85px 10% 0 10%;
+  overflow: auto;
+  display: block;
+}
 

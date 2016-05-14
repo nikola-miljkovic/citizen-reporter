@@ -1,12 +1,12 @@
 var express = require('express'),
   config = require('./config/config'),
-  glob = require('glob'),
+  glob = require('glob')/*,
   redis = require('redis'),
   client = redis.createClient();
 
 client.on('connect', function() {
   console.log("redis connected");
-});
+}); */
 
 var models = glob.sync(config.root + '/app/models/*.js');
 models.forEach(function (model) {
