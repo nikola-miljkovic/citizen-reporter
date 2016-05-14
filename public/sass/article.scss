@@ -1,0 +1,11 @@
+@import "colors";
+
+article {
+  display: inline-block;
+  float: left;
+  margin: 10px 1%;
+  padding: 10px;
+  background: bb-color("grey", "300");
+  width: 31.33%;
+  // (100-(2+2+2)) / 3
+}
