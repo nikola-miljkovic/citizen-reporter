@@ -77,6 +77,10 @@ module.exports = function (grunt) {
     }, 500);
   });
 
+  grunt.registerTask('no-sass', [
+      'develop',
+      'watch',
+    ]);
   grunt.registerTask('default', [
     'develop',
     'sass',
