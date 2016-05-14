@@ -15,9 +15,12 @@
     "method-override": "^2.3.0",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
+    "redis": "^2.6.0-2",
     "serve-favicon": "^2.3.0",
     "twit": "^2.2.4",
-    "twitter": "^1.2.5"
+    "twitter": "^1.2.5",
+    "twitter-js-client": "0.0.5",
+    "twitter-node-client": "0.0.6"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
