@@ -74,7 +74,7 @@ var fnc = function() {
                       id: status.id,
                       text: status.text.replace('\t', ' ').replace('\n',' ').replace('@', 'at '),
                       user_id: status.user.id,
-                      media:  status.media !== undefined ? status.media[0].media_url : ""
+                      media:  status.entities.media !== undefined ? status.entities.media[0].media_url : ""
                     });
                   });
 

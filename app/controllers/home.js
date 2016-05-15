@@ -10,7 +10,7 @@ var search = function(query) {
 }
 
 router.get('/', function (req, res) {
-  GLOBAL.redisClient.lrange('post_data', 0, 4, function(err, replay) {
+  GLOBAL.redisClient.lrange('post_data', 0, 7, function(err, replay) {
     var arr = [];
     replay.forEach(function(val) {
       var data = JSON.parse(val.toString('utf8'));
