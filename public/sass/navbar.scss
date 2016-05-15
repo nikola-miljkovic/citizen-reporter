@@ -18,21 +18,13 @@ nav {
     width: 100%;
 
     header {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
       float: left;
       height: 100%;
 
-      .logo {
-        display: inline-block;
-        &:first-of-type{
-          font-size: 3em;
-          margin-top: -5px;
-        }
-        &:last-of-type {
-          margin-left: -15px;
-          font-size: 2em;
-        }
-      }
 
       .brand {
         margin-left: 5px;
@@ -60,6 +52,10 @@ nav {
           margin: 0;
           border-radius: 0;
           border: 0;
+        }
+
+        input {
+          padding-left: 1em;
         }
 
         button {
@@ -96,15 +92,19 @@ nav {
 
     li {
       display: inline-flex;
-      margin-right: 2%;
-
+      margin-right: 10px;
+      padding-right: 10px;
+      border-right: 2px solid bb-color("icon-dark", "inactive");
       a {
         text-decoration: none;
         color: bb-color("text-dark", "secondary");
 
         &:hover {
-          color: bb-color("text-dark", "primary");
+          color: bb-color($primaryColor, "700");
         }
+      }
+      &:last-of-type {
+        border-right: none;
       }
     }
   }
