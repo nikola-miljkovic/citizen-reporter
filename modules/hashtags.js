@@ -39,7 +39,7 @@ var fnc = function() {
 
         filtered.forEach(function(tag) {
           console.log('Fetching...' + tag);
-          var query = 'https://api.twitter.com/1.1/search/tweets.json?q=' + tag.replace('#', '%23') + '&count=3';
+          var query = 'https://api.twitter.com/1.1/search/tweets.json?q=' + tag.replace('#', '%23') + '&count=100&locale=us';
           request.get(query, {
             headers: {
               Authorization: 'Bearer ' + access_token
@@ -49,15 +49,37 @@ var fnc = function() {
                   var filt = [];
 
                   bd.statuses.forEach(function(status) {
+                    if (status.retweeted_status !== undefined || status.text.length < 30 || status.lang !== 'en')
+                      return;
+
+                    var quality = 0.0;
+
+                    if (status.text.length > 55)
+                      quality += 0.20;
+                    if (status.entities.user_mentions.length === 0)
+                      quality += 0.20;
+                    if (status.entities.urls.length === 0)
+                      quality += 0.20;
+                    if (status.favorite_count > 1)
+                      quality += 0.10;
+                    if (status.favorite_count > 20)
+                      quality += 0.10;
+                    if (status.verified === true)
+                      quality += 0.20;
+
+                    if (quality < 0.40)
+                      return;
+
                     filt.push({
                       id: status.id,
-                      text: status.text,
+                      text: status.text.replace('\t', ' ').replace('\n',' ').replace('@', 'at '),
                       user_id: status.user.id,
                       media:  status.media !== undefined ? status.media[0].media_url : ""
                     });
                   });
 
                   console.log('Data for tag: ' + tag + '\n' + filt + '\n');
+                  console.log('TOTAL COUNT: ' + filt.length);
                   redis.set('tag:' + tag , JSON.stringify(filt));
               });
         });
@@ -67,5 +89,6 @@ var fnc = function() {
 });
 };
 
+redis.publish('test', 'testing');
 fnc();
 setInterval(fnc, 20*60000);

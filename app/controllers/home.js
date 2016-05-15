@@ -6,13 +6,25 @@ module.exports = function (app) {
 };
 
 var search = function(query) {
-  
+
 }
 
 router.get('/', function (req, res) {
-  res.render('index', {
-    title: 'Generator-Express MVC'
+  GLOBAL.redisClient.lrange('post_data', 0, 4, function(err, replay) {
+    var arr = [];
+    replay.forEach(function(val) {
+      arr.push(JSON.parse(val.toString('utf8')));
+    });
+
+    console.log(arr);
+    //console.log(JSON.parse(replay));
+    res.render('index', {
+      title: 'Generator-Express MVC',
+      content: arr//JSON.parse(replay)
+    });
   });
+
+
 });
 
 router.get('/search', function(req,res,next) {
