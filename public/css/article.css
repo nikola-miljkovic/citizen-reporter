@@ -1,0 +1,42 @@
+article {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
+  margin: 10px 1%;
+  display: block;
+  background: #f5f5f5;
+  width: 22.5%;
+  padding: 10px;
+  height: 275px;
+  position: relative;
+  cursor: pointer; }
+  article.large {
+    width: 47%; }
+  article:hover {
+    background: #eeeeee; }
+  article header .title {
+    padding: 0;
+    margin: 0; }
+  article section {
+    color: rgba(0, 0, 0, 0.54); }
+  article.hasImage {
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+    transition: visibility 1s ease; }
+    article.hasImage header,
+    article.hasImage section {
+      position: absolute;
+      background: rgba(33, 33, 33, 0.8);
+      color: white; }
+    article.hasImage section {
+      visibility: hidden; }
+    article.hasImage:hover section {
+      visibility: visible; }
+    article.hasImage header {
+      top: 15px;
+      left: 15px;
+      padding: 1%; }
+    article.hasImage section {
+      padding: 1%;
+      bottom: 0; }
+
+/*# sourceMappingURL=article.css.map */
