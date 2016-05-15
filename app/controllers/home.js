@@ -13,7 +13,9 @@ router.get('/', function (req, res) {
   GLOBAL.redisClient.lrange('post_data', 0, 4, function(err, replay) {
     var arr = [];
     replay.forEach(function(val) {
-      arr.push(JSON.parse(val.toString('utf8')));
+      var data = JSON.parse(val.toString('utf8'));
+      data.title = data.title.length > 26 ? data.title.substring(0, 26) + '...' : data.title;
+      arr.push(data);
     });
 
     console.log(arr);

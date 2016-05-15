@@ -214,8 +214,7 @@ body {
   min-height: 100%;
   width: 100%;
   flex-direction: row;
-  display: flex;
-  overflow: hidden; }
+  display: flex; }
 
 .content {
   padding: 0 1%;
