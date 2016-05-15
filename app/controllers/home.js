@@ -6,7 +6,7 @@ module.exports = function (app) {
 };
 
 var search = function(query) {
-  
+
 }
 
 router.get('/', function (req, res) {

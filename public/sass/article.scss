@@ -1,66 +1,73 @@
 @import "colors";
 
-article {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
-  margin: 10px 1%;
-  display: block;
-  background: bb-color("grey", "100");
-  width: 22.5%;
-  padding: 10px;
-  height: 275px;
-  position: relative;
-  cursor: pointer;
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
 
-  // 2* width + 2% for margin
-  &.large {
-    width: 47%;
-  }
+  article {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
+    margin: 10px 1%;
+    display: block;
+    background: bb-color("grey", "100");
+    width: 22.5%;
 
-  &:hover {
-    background: bb-color("grey", "200");
-  }
+    padding: 10px;
+    height: 325px;
+    position: relative;
+    cursor: pointer;
 
-  header {
-    .title {
-      padding: 0;
-      margin: 0;
+    // 2* width + 2% for margin
+    &.large {
+      width: 47%;
     }
-  }
 
-  section {
-    color: bb-color("text-dark", "secondary");
-  }
-
-
-  // Image Card
-  &.hasImage {
-    background-position: center;
-    background-size: cover;
-    padding: 0;
-    header,
-    section {
-      position: absolute;
-      background: rgba(bb-color("grey", "900"), 0.8);
-      color: bb-color("text-light", "primary");
-    }
-    transition: visibility 1s ease;
-
-    section {
-      visibility: hidden;
-    }
     &:hover {
-      section {
-        visibility: visible;
+      background: bb-color("grey", "200");
+    }
+
+    header {
+      .title {
+        padding: 0;
+        margin: 0;
       }
     }
-    header {
-      top: 15px;
-      left: 15px;
-      padding: 1%;
-    }
+
     section {
-      padding: 1%;
-      bottom: 0;
+      color: bb-color("text-dark", "secondary");
+    }
+
+    // Image Card
+    &.hasImage {
+      background-position: center;
+      background-size: cover;
+      padding: 0;
+      header,
+      section {
+        position: absolute;
+        background: rgba(bb-color("grey", "900"), 0.8);
+        color: bb-color("text-light", "primary");
+      }
+      transition: visibility 1s ease;
+
+      section {
+        visibility: hidden;
+      }
+      &:hover {
+        section {
+          visibility: visible;
+        }
+      }
+      header {
+        top: 15px;
+        left: 15px;
+        padding: 1%;
+      }
+      section {
+        padding: 1%;
+        bottom: 0;
+      }
     }
   }
 }
