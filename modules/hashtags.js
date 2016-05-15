@@ -39,7 +39,7 @@ var fnc = function() {
 
         filtered.forEach(function(tag) {
           console.log('Fetching...' + tag);
-          var query = 'https://api.twitter.com/1.1/search/tweets.json?q=' + tag.replace('#', '%23') + '&count=100';
+          var query = 'https://api.twitter.com/1.1/search/tweets.json?q=' + tag.replace('#', '%23') + '&count=3';
           request.get(query, {
             headers: {
               Authorization: 'Bearer ' + access_token
@@ -62,7 +62,7 @@ var fnc = function() {
               });
         });
 
-        redisClient.publish('trending_updated', 'updated');
+        redis.publish('trending_updated', 'updated');
   });
 });
 };

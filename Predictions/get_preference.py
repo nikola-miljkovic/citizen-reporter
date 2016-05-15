@@ -14,28 +14,30 @@ with open("classifier" + str(sys.argv[1]) + ".pickle", 'rb') as handle:
 
 indicoio.config.api_key = "bca760a95d156cbbad4729cb9cd4cb0e"
 
-r = redis.StrictRedis(host='193.2.178.131', port=6379, db=0)
+r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
 p = r.pubsub()
 p.subscribe("trending_updated")
 
 while True:
-    message = p.get_message()
-    posts = json.loads(message)
-    X_test = np.zeros(shape=[111, 1])
-    y_predict_proba = np.zeros(shape=[len(posts), 2])
-    ret = []
-    for i in range(0, len(posts)):
-        text_tags = indicoio.text_tags(posts[i]["text"], version=2)
-        X_test[:, 0] = list(text_tags.values())
-        y_predict_proba[i, :] = clf.predict_proba(X_test.T)
-        ret.insert((y_predict_proba[1], i))
+    p.get_message()
+    message = json.loads(r.get('trending:us').decode("utf-8"))
+    for post in message:
+        posts = json.loads(r.get('tag:' + post).decode("utf-8"))
+        print(posts)
+        X_test = np.zeros(shape=[111, 1])
+        y_predict_proba = np.zeros(shape=[len(posts), 2])
+        ret = []
+        for i in range(0, len(posts)):
+            text_tags = indicoio.text_tags(posts[i]["text"], version=2)
+            X_test[:, 0] = list(text_tags.values())
+            y_predict_proba[i, :] = clf.predict_proba(X_test.T)
+            ret.append((y_predict_proba[i, 1], i))
 
-    ret.sort(lambda x, y: y if x(0) > y(0) else x)
-
-    queue = [dict() for x in range(0, 10)]
-    for i in range(0, 10):
-        pop = ret.pop()
-        queue.insert({'proba': pop(0), 'index': pop(1)})
+        ret = sorted(ret, key=lambda x: x[0])
+        print(ret)
+        queue = []
+        for i in range(0, min(10, len(ret))):
+            pop = ret[min(10, len(ret)) - i - 1]
+            queue.append({'proba': pop[0], 'index': pop[1]})
 
     p.publish("prediction_finished")
-
