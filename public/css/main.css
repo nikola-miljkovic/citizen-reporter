@@ -1,66 +1,56 @@
 nav {
-  display: block;
-  position: absolute;
-  padding: 0 10%;
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  height: 75px;
+  width: 20%;
+  height: 100%;
   background: #f4511e;
   color: white; }
-  nav .nav-wrapper {
-    display: block;
-    height: 100%;
-    width: 100%; }
-    nav .nav-wrapper header {
+  nav header {
+    margin-top: 25px;
+    width: 100%;
+    display: flex; }
+    nav header .brand {
+      margin: auto;
+      color: white;
+      font-size: 40px; }
+  nav .search {
+    width: 100%;
+    display: flex; }
+    nav .search .search-wrapper {
+      height: 40px;
       display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-      float: left;
-      height: 100%; }
-      nav .nav-wrapper header .brand {
-        margin-left: 5px;
-        color: rgba(255, 255, 255, 0.7);
-        display: inline-block;
-        font-size: 40px; }
-    nav .nav-wrapper .search {
-      height: 100%;
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-      float: right; }
-      nav .nav-wrapper .search .search-wrapper {
+      margin: auto; }
+      nav .search .search-wrapper input,
+      nav .search .search-wrapper button {
         height: 40px;
-        display: flex; }
-        nav .nav-wrapper .search .search-wrapper input,
-        nav .nav-wrapper .search .search-wrapper button {
-          height: 40px;
-          margin: 0;
-          border-radius: 0;
-          border: 0; }
-        nav .nav-wrapper .search .search-wrapper input {
-          padding-left: 1em; }
-        nav .nav-wrapper .search .search-wrapper button {
-          cursor: pointer;
+        margin: 0;
+        border-radius: 0;
+        border: 0; }
+      nav .search .search-wrapper input {
+        padding-left: 1em; }
+      nav .search .search-wrapper button {
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.54); }
+        nav .search .search-wrapper button:hover {
+          background: #e0e0e0;
           color: rgba(0, 0, 0, 0.54); }
-          nav .nav-wrapper .search .search-wrapper button:hover {
-            background: #e0e0e0;
-            color: rgba(0, 0, 0, 0.54); }
 
 .categories {
   display: block;
-  position: absolute;
   padding: 0 10%;
-  top: 75px;
-  left: 0;
+  width: 100%;
   right: 0;
+  left: 0;
+  margin-top: 20px;
   color: white; }
   .categories .categories-wrapper {
+    overflow: hidden !important;
+    font-size: 1.2em;
     height: 20px;
     display: flex;
-    overflow: auto;
     padding: 0 1.25%;
     flex-direction: row;
     align-items: center;
@@ -69,6 +59,7 @@ nav {
       display: inline-flex;
       margin-right: 10px;
       padding-right: 10px;
+      text-transform: uppercase;
       border-right: 2px solid rgba(0, 0, 0, 0.26); }
       .categories .categories-wrapper li a {
         text-decoration: none;
@@ -78,46 +69,137 @@ nav {
       .categories .categories-wrapper li:last-of-type {
         border-right: none; }
 
-article {
+.articles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  width: 80%;
+  position: absolute;
+  transition: transform 1s cubic-bezier(0.22, 0.02, 0.69, 0.97); }
+  .articles.transitionPositive {
+    transform: translate(2000px, 0); }
+  .articles.transitionCurrent {
+    transform: translate(0, 0); }
+  .articles.transitionNegative {
+    transform: translate(-2000px, 0); }
+  .articles.transitionOpenArticle {
+    transform: translate(0, 2000px); }
+  .articles.transitionCloseArticle {
+    transform: translate(0, 0); }
+  .articles article {
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
+    margin: 10px 1%;
+    display: block;
+    background: #f5f5f5;
+    width: 22.5%;
+    padding: 10px;
+    height: 325px;
+    position: relative;
+    cursor: pointer; }
+    .articles article.large {
+      width: 47%; }
+    .articles article:hover {
+      background: #eeeeee; }
+    .articles article header .title {
+      padding: 0;
+      margin: 0; }
+    .articles article section {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      color: rgba(0, 0, 0, 0.54); }
+      .articles article section aside {
+        display: flex; }
+    .articles article.hasImage {
+      background-position: center;
+      background-size: cover;
+      padding: 0;
+      transition: all 1s ease; }
+      .articles article.hasImage header,
+      .articles article.hasImage section {
+        position: absolute;
+        background: rgba(33, 33, 33, 0.8);
+        color: white; }
+      .articles article.hasImage section {
+        height: 70px;
+        visibility: hidden;
+        margin-bottom: -70px;
+        background: #f5f5f5;
+        color: rgba(0, 0, 0, 0.87);
+        position: absolute;
+        transition: all 0.5s ease; }
+      .articles article.hasImage:hover {
+        box-shadow: inset 100px 100px 100px rgba(0, 0, 0, 0.3); }
+        .articles article.hasImage:hover section {
+          visibility: visible;
+          transform: translate(0, -70px); }
+      .articles article.hasImage header {
+        top: 15px;
+        left: 15px;
+        padding: 1%; }
+      .articles article.hasImage section {
+        padding: 1%;
+        bottom: 0; }
+
+.nextPage {
+  position: fixed;
+  right: 50px;
+  top: 50%; }
+
+.previousPage {
+  position: fixed;
+  left: 50px;
+  top: 50%; }
+
+.nextPage button,
+.previousPage button {
+  cursor: pointer;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
-  margin: 10px 1%;
-  display: block;
+  height: 50px;
+  width: 50px;
+  border: 0;
   background: #f5f5f5;
-  width: 22.5%;
-  padding: 10px;
-  height: 275px;
-  position: relative;
-  cursor: pointer; }
-  article.large {
-    width: 47%; }
-  article:hover {
+  border-radius: 50%;
+  transition: all 0.25s ease; }
+  .nextPage button:hover,
+  .previousPage button:hover {
     background: #eeeeee; }
-  article header .title {
-    padding: 0;
-    margin: 0; }
-  article section {
-    color: rgba(0, 0, 0, 0.54); }
-  article.hasImage {
-    background-position: center;
-    background-size: cover;
-    padding: 0;
-    transition: visibility 1s ease; }
-    article.hasImage header,
-    article.hasImage section {
-      position: absolute;
-      background: rgba(33, 33, 33, 0.8);
-      color: white; }
-    article.hasImage section {
-      visibility: hidden; }
-    article.hasImage:hover section {
-      visibility: visible; }
-    article.hasImage header {
-      top: 15px;
-      left: 15px;
-      padding: 1%; }
-    article.hasImage section {
-      padding: 1%;
-      bottom: 0; }
+  .nextPage button:active,
+  .previousPage button:active {
+    background: #ff7043;
+    color: white; }
+
+#openArticles {
+  position: fixed;
+  top: -1500px;
+  margin: 0 -11%; }
+  #openArticles article {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s cubic-bezier(0.22, 0.02, 0.69, 0.97);
+    background: none !important; }
+    #openArticles article.transitionArticleDown {
+      transform: translate(0, 1500px); }
+    #openArticles article.transitionArticleUp {
+      transform: translate(0, 0); }
+    #openArticles article .content {
+      background: #f5f5f5;
+      width: 50%;
+      height: 60%;
+      margin: 10% 25%; }
+      #openArticles article .content header h2 {
+        display: inline-block;
+        float: left; }
+      #openArticles article .content header .closeArticle {
+        float: right;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.54); }
 
 * {
   box-sizing: border-box; }
@@ -130,13 +212,17 @@ html {
 html,
 body {
   min-height: 100%;
-  width: 100%; }
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  overflow: hidden; }
 
 .content {
   padding: 0 1%;
-  margin: 125px 10% 0 10%;
+  margin: 0 10% 0 10%;
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%; }
+  flex-direction: column;
+  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */

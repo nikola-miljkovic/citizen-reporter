@@ -2,70 +2,55 @@
 @import "config";
 
 nav {
-  display: block;
-  position: absolute;
-  padding: 0 10%;
+  display: flex !important;
+  flex-direction: column;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  height: 75px;
+  width: 20%;
+  height: 100%;
   background: bb-color($primaryColor, "600");
   color: bb-color("text-light", "primary");
 
-  .nav-wrapper {
-    display: block;
-    height: 100%;
+  header {
+    margin-top: 25px;
     width: 100%;
-
-    header {
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-      float: left;
-      height: 100%;
-
-
-      .brand {
-        margin-left: 5px;
-        color: bb-color("text-light", "secondary");
-        display: inline-block;
-        font-size: 40px;
-      }
+    display: flex;
+    .brand {
+      margin: auto;
+      color: bb-color("text-light", "primary");
+      font-size: 40px;
     }
+  }
 
-    .search {
-      height: 100%;
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
-      float: right;
+  .search {
+    width: 100%;
+    display: flex;
 
-      .search-wrapper {
+    .search-wrapper {
+      height: 40px;
+      display: flex;
+      margin: auto;
+
+      input,
+      button {
         height: 40px;
-        display: flex;
+        margin: 0;
+        border-radius: 0;
+        border: 0;
+      }
 
-        input,
-        button {
-          height: 40px;
-          margin: 0;
-          border-radius: 0;
-          border: 0;
-        }
+      input {
+        padding-left: 1em;
+      }
 
-        input {
-          padding-left: 1em;
-        }
+      button {
+        cursor: pointer;
+        color: bb-color("text-dark", "secondary");
 
-        button {
-          cursor: pointer;
+        &:hover {
+          background: bb-color("grey", "300");
           color: bb-color("text-dark", "secondary");
-
-          &:hover {
-            background: bb-color("grey", "300");
-            color: bb-color("text-dark", "secondary");
-          }
         }
       }
     }
@@ -74,17 +59,19 @@ nav {
 
 .categories {
   display: block;
-  position: absolute;
   padding: 0 10%;
-  top: 75px;
-  left: 0;
+  width: 100%;
   right: 0;
+  left: 0;
+  margin-top: 20px;
   color: bb-color("text-light", "primary");
 
   .categories-wrapper {
+
+    overflow: hidden !important;
+    font-size: 1.2em;
     height: 20px;
     display: flex;
-    overflow: auto;
     padding: 0 1.25%;
     flex-direction: row;
     align-items: center;
@@ -94,6 +81,8 @@ nav {
       display: inline-flex;
       margin-right: 10px;
       padding-right: 10px;
+      text-transform: uppercase;
+
       border-right: 2px solid bb-color("icon-dark", "inactive");
       a {
         text-decoration: none;

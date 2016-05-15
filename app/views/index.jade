@@ -3,18 +3,128 @@ extends layout
 block content
 
   include navbar
-
   .content
-    each val in content
-      if val.image
-        article.large.hasImage(style="background:url('#{val.image}')")
+    .categories
+      ul.categories-wrapper
+        li
+          a(href="#") Science
+        li
+          a(href="#") Sport
+        li
+          a(href="#") Art
+        li
+          a(href="#") Movies
+        li
+          a(href="#") Games
+
+
+    .articles.p-1
+      each val in content
+        if val.image
+          article.large.hasImage(style="background:url('#{val.image}')")
+            header
+              h2.title #{val.title}
+            section.
+              #{val.content}
+        else
+          article
+            header
+              h2.title #{val.title}
+            section
+              aside.
+                #{val.content}
+
+    .articles.p-2.transitionPositive
+      article.large.hasImage(style="background:url('http://cdn.newsapi.com.au/image/v1/beb6afde321b487f425d54fd3ad061c9')")
+        header
+          h2.title Goverment something
+        section
+          aside.
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article
+        header
+          h2.title Goverment something
+        section.
+          Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article
+        header
+          h2.title Banana something
+        section.
+          Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article
+        header
+          h2.title Goverment something
+        section.
+          Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article.large.hasImage(style="background:url('http://cdn.newsapi.com.au/image/v1/beb6afde321b487f425d54fd3ad061c9')")
+        header
+          h2.title Goverment something
+        section
+          aside.
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article
+        header
+          h2.title Goverment something
+        section.
+          Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+
+    .previousPage
+      button
+        i.fa.fa-chevron-left
+    .nextPage
+      button
+        i.fa.fa-chevron-right
+
+    #openArticles
+      article#1open.large.hasImage(style="background:url('http://cdn.newsapi.com.au/image/v1/beb6afde321b487f425d54fd3ad061c9')")
+        .content
           header
-            h2.title #{val.title}
-          section.
-            #{val.content}
-      else
-        article
+            h2.title Goverment something
+          section
+            aside.
+              Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article#2open
+        .content
           header
-            h2.title #{val.title}
+            h2.title Goverment something
+            h2.closeArticle
+              i.fa.fa-times
           section.
-            #{val.content}
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article#3open
+        .content
+          header
+            h2.title Goverment something
+          section.
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article#4open
+        .content
+          header
+            h2.title Goverment something
+          section.
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article#5open.large.hasImage(style="background:url('http://cdn.newsapi.com.au/image/v1/beb6afde321b487f425d54fd3ad061c9')")
+        .content
+          header
+            h2.title Goverment something
+          section
+            aside.
+              Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+
+      article#6open
+        .content
+          header
+            h2.title Goverment something
+          section.
+            Government officials said classifying transgender people as mentally ill was “stigmatising” and they had “run out of patience” with the World Health Organisation’s (WHO) work on the definition.
+>>>>>>> b4daaaf45b9e7e3fb644abf1707488380f58e0a5
