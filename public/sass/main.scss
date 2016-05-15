@@ -1,5 +1,5 @@
 // Imports
-//@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "config";
 @import "navbar";
 @import "article";
 @import "colors";
@@ -12,6 +12,7 @@
 html {
   font-family: Roboto, 'Helvetica Neue', sans-serif !important;
   color: bb-color('text-dark', 'primary');
+  background: bb-color("grey", "300");
 }
 
 html,
@@ -22,8 +23,8 @@ body {
 
 .content {
   padding: 0;
-  margin: 85px 10% 0 10%;
-  overflow: auto;
-  display: block;
+  margin: 125px 10% 0 10%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
-
