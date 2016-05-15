@@ -8,6 +8,8 @@ client.on('connect', function() {
   console.log("redis connected");
 }); */
 
+GLOBAL.redisClient = client;
+
 var models = glob.sync(config.root + '/app/models/*.js');
 models.forEach(function (model) {
   require(model);
