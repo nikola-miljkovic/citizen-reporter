@@ -18,24 +18,26 @@ nav {
     width: 100%;
 
     header {
-      display: inline-flex;
+      display: block;
       float: left;
       height: 100%;
-      flex-direction: column;
-      justify-content: center;
-      align-content: center;
+
+      .logo {
+        display: inline-block;
+        &:first-of-type{
+          font-size: 3em;
+          margin-top: -5px;
+        }
+        &:last-of-type {
+          margin-left: -15px;
+          font-size: 2em;
+        }
+      }
 
       .brand {
-
-        .logo {
-          &:first-letter {
-            font-size: 2em;
-          }
-          &:last
-        }
-
+        margin-left: 5px;
         color: bb-color("text-light", "secondary");
-        display: flex;
+        display: inline-block;
         font-size: 40px;
       }
     }
